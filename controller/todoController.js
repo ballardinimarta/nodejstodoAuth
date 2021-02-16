@@ -1,11 +1,9 @@
-const express = require("express");
 const Task = require("../model/task");
-const router = express.Router();
 
 let sorted = 1;
 let page = 1;
 
-router.get("/", async (req, res) => {
+const homeRender = async (req, res) => {
     sorted = req.query.sort;
     page = req.query.page;
     try {
@@ -15,9 +13,9 @@ router.get("/", async (req, res) => {
     } catch (error) {
         res.render("error.ejs", {error: error})
     }
-})
+}
 
-router.post("/", async (req, res) => {
+const addNewTodo = async (req, res) => {
     try {
         await new Task({
             name: req.body.name
@@ -27,9 +25,9 @@ router.post("/", async (req, res) => {
         res.render("error.ejs", {error: error})
     }
     
-})
+}
 
-router.get( "/edit/:id", async (req, res) => {
+const editTodo = async (req, res) => {
     try {
         sorted = req.query.sort;
         page = req.query.page;
@@ -41,10 +39,9 @@ router.get( "/edit/:id", async (req, res) => {
     } catch (error) {
         res.render("error.ejs", {error :error}) 
     }
-    
-})
+}
 
-router.post("/edit", async (req, res) => {
+const editTodoPost = async (req, res) => {
     try {
         await Task.updateOne({_id:req.body.id},{ name:req.body.name});
         res.redirect("/");
@@ -53,9 +50,9 @@ router.post("/edit", async (req, res) => {
 
     }
     
-})
+}
 
-router.get("/delete/:id", async (req, res) => {
+const deleteTodo = async (req, res) => {
     try {
         await Task.deleteOne({_id: req.params.id})
         res.redirect("/");
@@ -63,6 +60,12 @@ router.get("/delete/:id", async (req, res) => {
         res.render("error.ejs", { error: error})
 
     }
-})
+}
 
-module.exports = router;
+module.exports = {
+    homeRender,
+    addNewTodo,
+    editTodo,
+    editTodoPost,
+    deleteTodo
+}

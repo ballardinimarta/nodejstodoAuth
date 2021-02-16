@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const router = require("./routes/routes")
+const todoRoute = require("./routes/todoRoute")
 const bodyParser = require("body-parser")
 require("dotenv").config();
 
@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.set("view engine", "ejs")
 
-app.use("/", router)
+app.use("/", todoRoute)
 
 
 mongoose.connect(process.env.DATABASE_URL, 
