@@ -8,7 +8,6 @@ require("dotenv").config();
 var sassMiddleware = require('node-sass-middleware');
 var path = require('path');
 app.use(sassMiddleware({
-    /* Options */
     src: path.join(__dirname, 'scss'),
     dest: path.join(__dirname, 'public/style'),
     debug: true,
