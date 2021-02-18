@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const todoRoute = require("./routes/todoRoute")
+const userRoute = require("./routes/userRoute");
+const cookieParser = require("cookie-parser")
 const bodyParser = require("body-parser")
 require("dotenv").config();
 
@@ -18,10 +20,12 @@ app.use(sassMiddleware({
 app.use(express.static('public'))
 
 app.use(bodyParser.urlencoded({ extended: false })) 
+app.use(cookieParser());
 
 app.set("view engine", "ejs")
 
 app.use("/", todoRoute)
+app.use("/", userRoute)
 
 
 mongoose.connect(process.env.DATABASE_URL, 
