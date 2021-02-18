@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeJS Todo-list</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style/login.css">
+</head>
+<body>
+    <h1>Reset Password!</h1>
+   <% if (error) { %>
+    <h2 style="color: red;"> <%= error %> </h2>
+    <% } %>
+    <form action="/login" method="POST">
+        <input type="email" name="email" id="" placeholder="email">
+        <button type="submit">Send email!!</button>
+    </form>
+    <div>
+        <a href="/login">Remembered your password? Go to login!</a>
+    </div> 
+    <div>
+        <a href="/register">Don't have an account? Register Here!</a>
+    </div>
+</body>
+</html>
