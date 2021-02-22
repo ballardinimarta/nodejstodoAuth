@@ -29,7 +29,8 @@ const loginSubmit = async (req, res) => {
     }
 }
 
+
 module.exports = {
     loginRender,
-    loginSubmit
+    loginSubmit,
 }
