@@ -9,20 +9,14 @@
     <link rel="stylesheet" href="/style/login.css">
 </head>
 <body>
-    <h1>Login!</h1>
+    <h1>New Password!</h1>
    <% if (error) { %>
     <h2 style="color: red;"> <%= error %> </h2>
     <% } %>
-    <form action="/login" method="POST">
-        <input type="text" name="username" id="" placeholder="username">
-        <input type="password" name="password" id="" placeholder="password">
-        <button type="submit">Login!</button>
+    <form action="/reset/:token" method="post">
+        <input type="email" name="email" id="" value="<%= email %>" hidden>
+        <input type="password" name="password" id="">
+        <button type="submit">Reset Password!</button>
     </form>
-    <div>
-        <a href="/reset">Forgot your password? No worries, reset here!</a>
-    </div> 
-    <div>
-        <a href="/register">Don't have an account? Register Here!</a>
-    </div> 
 </body>
 </html>
